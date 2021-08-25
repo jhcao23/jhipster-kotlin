@@ -59,8 +59,7 @@ class <%= entityClass %>RowMapper(val converter: ColumnConverter): BiFunction<Ro
             let fieldType = field.fieldType;
             if (field.blobContentTypeText) {
                 fieldType = 'String';
-            } 
-            if (field.fieldTypeBlobContent) {
+            } else if (field.blobContentTypeImage) {
                 fieldType = 'ByteArray';
             }
             if (field.fieldTypeBytes && !field.blobContentTypeText) { _%>
