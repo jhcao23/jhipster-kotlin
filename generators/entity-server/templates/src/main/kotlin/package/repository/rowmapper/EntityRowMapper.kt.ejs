@@ -59,6 +59,9 @@ class <%= entityClass %>RowMapper(val converter: ColumnConverter): BiFunction<Ro
             let fieldType = field.fieldType;
             if (field.blobContentTypeText) {
                 fieldType = 'String';
+            } 
+            if (field.fieldTypeBlobContent) {
+                fieldType = 'ByteArray';
             }
             if (field.fieldTypeBytes && !field.blobContentTypeText) { _%>
         entity.<%= field.fieldName %>ContentType = converter.fromRow(row, prefix + "_<%= field.fieldNameAsDatabaseColumn %>_content_type", String::class.java)
